@@ -6,7 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report,confusion_matrix,accuracy_score
 import pickle
 
-data = pd.read_csv("C:/Users/SriramAditya/Desktop/ML CBP/SIP/src/posts/Heart_Disease_Prediction.csv")
+data = pd.read_csv("src\posts\Heart_Disease_Prediction.csv")
 
 x= data.iloc[:, 0:13].values
 y= data.iloc[:, 13].values
