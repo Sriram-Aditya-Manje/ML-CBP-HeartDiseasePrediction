@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>prediction</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+              $(function () {
+                $("#header").load("/header");
+              });
+        </script>
+
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <h1 class="text-center mt-5">Statistics</h1>
+
+        <div class="d-flex">
+            <div class="w-25 mx-auto m-3">
+                <h4 class="text-center">Different age group people that use prediction</h4>
+                <canvas id="age"></canvas>
+            </div>
+
+            <div class="w-25 mx-auto m-3">
+                <h4 class="text-center">Genders of people who have doubts about having heart diseases</h4>
+                <canvas id="sex"></canvas>
+            </div>
+
+            <div class="w-25 mx-auto m-3 d-flex flex-column justify-content-center">
+                <h4 class="text-center">Different age groups and their BP levels</h4>
+                <canvas id="agebp"></canvas>
+            </div>
+        </div>
+          
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+        <script>
+            const ctx = document.getElementById('age');
+          
+            new Chart(ctx, {
+              type: 'pie',
+              data: {
+                    datasets: [{
+                        data: JSON.parse("{{ages}}")
+                    }],
+
+                    labels: ['0-10','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90','91-100',]
+                }
+            });
+            
+            const ctx1 = document.getElementById('sex');
+          
+            new Chart(ctx1, {
+              type: 'pie',
+              data: {
+                    datasets: [{
+                        data: JSON.parse("{{sex}}")
+                    }],
+
+                    labels: ['Male','Female']
+                }
+            });
+            
+            const ctx2 = document.getElementById('agebp');
+          
+            new Chart(ctx2, {
+              type: 'line',
+              data: {
+                labels: JSON.parse("{{agebp_age}}"),
+                    datasets: [{
+                        label: '    ',
+                        data: JSON.parse("{{agebp_bp}}"),
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                }
+            });
+        </script>
+           
+    </body>
+</html>

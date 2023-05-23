@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>result page</title>
+      
+        <script src="https://kit.fontawesome.com/47101d2035.js" crossorigin="anonymous"></script>
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      
+        <style>
+          .center {
+            position: absolute;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(230, 239, 245);
+          }
+          i{
+            color: rgb(255, 0, 0);
+            font-size: 150px;
+          }
+        </style>
+      </head>
+
+    <body class="center">
+        {% if result == 'You may have heart disease' %}
+        <i class="fas fa-heart"></i>
+        <h1>{{result}}</h1>
+      
+        {% elif result == 'You may not have heart disease' %}
+        <i class="fas fa-check"></i>
+        <h1>{{result}}</h1>
+      
+        {% else %}
+        <h1 class="fw-bolder text-danger">ERROR!</h1>
+        <h2>{{result}}</h2>
+        {% endif %}
+
+    </body>
+</html>
